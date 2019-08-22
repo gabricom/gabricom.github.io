@@ -40,5 +40,8 @@
     "mustache": "^2.3.0",
     "socket.io": "^2.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.1"
+  }
 }
