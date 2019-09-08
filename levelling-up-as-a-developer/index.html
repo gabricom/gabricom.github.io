@@ -1,92 +1,934 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>Levelling up as a developer - gabricom</title>
+    <title>Levelling up as a developer - gabricom</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/gabricom.css">
-		<link rel="stylesheet" href="lib/css/@fortawesome/fontawesome-free/css/all.min.css">
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/reveal.css"/>
+    <link rel="stylesheet" href="css/theme/gabricom.css"/>
+    <link
+            rel="stylesheet"
+            href="lib/css/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css"/>
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section id="title">
-					<img src="img/developer-for-title.jpg" style="width:40%;float:left"/>
-					<h4>Levelling up as a developer </h4>
-					<p>Best practices for improving code quality and avoid burnout</p>
-					<small>
-						<p>
-							<a href="https://github.com/gabricom">Gabriele Colombera</a> / <a
-								href="http://twitter.com/gabricom">@gabricom</a><br>
-						</p>
-						<p>
-							PUG SONDRIO - 11 Settembre 2019
-						</p>
-					</small>
-				</section>
-				<section id ="intro">
-					<img src="img/gabricom.jpg" style="width:30%;float:left" class="avatar" >
-					<div style="width:60%;float:right">
-						<ul class="fa-ul" style="list-style:none;margin:0;padding:0">
-							<li><span class="fa-li"><i class="fa fa-user"></i></span>Gabriele Colombera</li>
-							<li>
-								<span class="fa-li"><i class="fa fa-desktop"></i></span>
-								Fullstack developer <img src="img/webtek.svg"
-														style="height: 1em; box-shadow: none; vertical-align: middle;border:0;box-shadow: none;background: none">
-							</li>
-							<li>
-								<span class="fa-li"><i class="fab fa-github"></i></span>
-								<a href="https://github.com/gabricom">@gabricom</a>
-							</li>
-							<li>
-								<span class="fa-li"><i class="fab fa-facebook"></i></span>
-								<a href="https://facebook.com/gabricom">@gabricom</a>
-							</li>
-							<li>
-								<span class="fa-li"><i class="fab fa-twitter"></i></span>
-								<a href="https://twitter.com/gabricom">@gabricom</a>
-							</li>
-							<li>
-								<span class="fa-li"><i class="fa fa-users"></i></span>
-								Coordinatore PUG Sondrio
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section data-background-image="img/meme-01.jpg" data-background-size="contain"></section>
-				<section data-background-image="img/meme-02.png" data-background-size="contain"></section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+		var link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.type = "text/css";
+		link.href = window.location.search.match(/print-pdf/gi)
+			? "css/print/pdf.css"
+			: "css/print/paper.css";
+		document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section id="title">
+            <img src="img/developer-for-title.jpg" style="width:40%;float:left"/>
+            <h4>Levelling up as a developer</h4>
+            <p>Best practices for improving code quality and avoid burnout</p>
+            <small>
+                <p>
+                    <a href="https://github.com/gabricom">Gabriele Colombera</a> /
+                    <a href="http://twitter.com/gabricom">@gabricom</a><br/>
+                </p>
+                <p>
+                    PUG SONDRIO - 11 Settembre 2019
+                </p>
+            </small>
+        </section>
+        <section id="intro">
+            <img
+                    src="img/gabricom.jpg"
+                    style="width:30%;float:left"
+                    class="avatar"
+            />
+            <div style="width:60%;float:right">
+                <ul class="fa-ul" style="list-style:none;margin:0;padding:0">
+                    <li>
+                        <span class="fa-li"><i class="fa fa-user"></i></span>Gabriele
+                        Colombera
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fa fa-desktop"></i></span>
+                        Fullstack developer
+                        <img
+                                src="img/webtek.svg"
+                                style="height: 1em; box-shadow: none; vertical-align: middle;border:0;box-shadow: none;background: none"
+                        />
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fab fa-github"></i></span>
+                        <a href="https://github.com/gabricom">@gabricom</a>
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fab fa-facebook"></i></span>
+                        <a href="https://facebook.com/gabricom">@gabricom</a>
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fab fa-twitter"></i></span>
+                        <a href="https://twitter.com/gabricom">@gabricom</a>
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fa fa-users"></i></span>
+                        Coordinatore PUG Sondrio
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fa fa-gamepad"></i></span>
+                        Passionate Gamer
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h1>Fonti</h1>
+            <ul>
+                <li>
+                    Code Complete - Steve McConnell
+                </li>
+                <li>
+                    Clean Code - Robert C. Martin
+                </li>
+            </ul>
+        </section>
+        <section id="cleancode-why">
+            <section>
+                <h1>WHY? </h1>
+                <aside class="notes">
+                    Voglio cominciare iniziando a spiegarvi il perchè di questa presentazione.
+                    Lo scopo di questa presentazione è per lo più quello di far riflettere sulla scrittura di codice e
+                    quali aspetti del nostro lavoro sono i più importanti e magari spronare sopratutto quelli che hanno
+                    iniziato da poco
+                    a riflettere su alcuni aspetti del mondo della programmazione.
+                    Io stesso mi ritenevo un buon programmatore dato che il mio codice funzionava ma poi in realtà una
+                    volta partecipato a conferenze come phpday e simili ti rendi conto di non sapere un cazzo e capisci
+                    che è importante
+                    studiare e riuscire a "livellare" migliorando costantemente nel tempo.
+                    Fatevi una domanda..
+                </aside>
+            </section>
+            <section>
+                <h2>Scrivete codice così ?</h2>
+                <img src="img/meme-cat.webp">
+            </section>
+            <section>
+                <h2>Oppure così ?</h2>
+                <img src="img/meme-goodthinking.jpg">
+            </section>
+            <section>
+                <h2>TRUTHS ABOUT CODING</h2>
+                <ul>
+                    <li>time reading > time writing</li>
+                    <li>Ti dimentichi il tuo codice in fretta</li>
+                    <lI>I membri del tuo team pensano diversamente da te</lI>
+                    <li>L'unica costante è il cambiamento</li>
+                    <li>Per essere un buon programmatore non basta saper scrivere codice che funzioni</li>
 
-		<script src="js/reveal.js"></script>
+                    <aside class="notes">
+                        Queste sono alcune cose che ho imparato nei miei anni da programmatore.
+                        Non so quanti di voi si siano trovati in .. questa situazione
+                    </aside>
+                </ul>
+            </section>
+            <section>
+                <h2>CLEAN CODE SAVES TIME</h2>
+            </section>
+        </section>
+        <section
+                data-background-image="img/meme-01.jpg"
+                data-background-size="contain"
+        >
+            <aside class="notes">
+                Questa situazione .. a me è successo più di una volta ve lo assicuro.
+            </aside>
+        </section>
+        <section
+                data-background-image="img/meme-02.png"
+                data-background-size="contain"
+        >
+            <aside class="notes">
+                Il codice può nascondere delle cose meravigliose al suo interno .
+            </aside>
+        </section>
+        <section>
+            <h2>Costruire software è difficile.</h2>
+        </section>
+        <section>
+            <h2>Attività</h2>
+            <div style="float:left;width:50%">
+                <img style="width:100%" src="img/fasi-sviluppo.png"/>
+            </div>
+            <div style="float:left;width:50%">
+                <img style="width:100%" src="img/piramide-sviluppo.png"/>
+            </div>
+            <aside class="notes">
+                Le attività che fanno parte della costruzione di un software sono tantissime.
+                Oggi ci concentreremo principalmente sulla parte relativa ai requisiti e sulla parte di "Construction"
+                in cui si va effettivamente a scrivere codice
+                Ognuna di queste fasi è però importante e sarebbe bello se in futuro qualcuno si proponesse per fare
+                talk anche su altri aspetti.
+                Code Complete si sofferma su ognuna di queste fasi e fa rimandi ad altri libri/fonti per cui lo
+                consiglio come punto di partenza per chi voglia iniziare a studiarsi meglio i vari aspetti.
+            </aside>
+        </section>
+        <section id="prerequisites">
+            <section>
+                <h1>Analisi dei requisiti</h1>
+            </section>
+            <section>
+                <h2>Errori comuni</h2>
+                <ul>
+                    <li>Non sappiamo prendere le specifiche nel modo corretto</li>
+                    <li>Vogliamo iniziare subito a programmare e quindi passiamo subito al codice vero e proprio</li>
+                    <li>A volte il problema è manageriale ed è dovuto a una mancanza di conoscenza dell'ambito</li>
+                    <aside class="notes">
+                        Part of your job as a technical employee is to educate the nontechnical people around
+                        you about the development process. This section will help you deal with managers
+                        and bosses who have not yet seen the light. It’s an extended argument for doing
+                        requirements and architecture—getting the critical aspects right—before you begin cod-
+                        ing, testing, and debugging. Learn the argument, and then sit down with your boss
+                        and have a heart-to-heart talk about the programming process.
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+                        One of the key ideas in effective programming is that preparation is important. It
+                        makes sense that before you start working on a big project, you should plan the
+                        project. Big projects require more planning; small projects require less. From a man-
+                        agement point of view, planning means determining the amount of time, number of
+                        people, and number of computers the project will need. From a technical point of
+                        view, planning means understanding what you want to build so that you don’t waste
+                        money building the wrong thing. Sometimes users aren’t entirely sure what they want
+                        at first, so it might take more effort than seems ideal to find out what they really want.
+                        But that’s cheaper than building the wrong thing, throwing it away, and starting over.
+                        It’s also important to think about how to build the system before you begin to build it.
+                        You don’t want to spend a lot of time and money going down blind alleys when
+                        there’s no need to, especially when that increases costs.
+                    </aside>
+                </ul>
+            </section>
+            <section>
+                <h2>E' fondamentale enfatizzare la qualità fin dall'inizio del progetto, anche imparare a prendere
+                    requisiti deve essere una skill che va raggiunta</h2>
+                <aside class="notes">
+                    If you emphasize quality at the beginning of the project, you plan for, require, and
+                    design a high-quality product. If you start the process with designs for a Pontiac Aztek,
+                    you can test it all you want to, and it will never turn into a Rolls-Royce. You might
+                    build the best possible Aztek, but if you want a Rolls-Royce, you have to plan from the
+                    beginning to build one. In software development, you do such planning when you
+                    define the problem, when you specify the solution, and when you design the solution.
+                    Since construction is in the middle of a software project, by the time you get to con-
+                    struction, the earlier parts of the project have already laid some of the groundwork for
+                    success or failure. During construction, however, you should at least be able to deter-
+                    mine how good your situation is and to back up if you see the black clouds of failure
+                    looming on the horizon. The rest of this chapter describes in detail why proper prep-
+                    aration is important and tells you how to determine whether you’re really ready to
+                    begin construction.
+                </aside>
+            </section>
+            <section>
+                <h2>Dedicare il tempo giusto in base al tipo di progetto su cui si deve lavorare.</h2>
+            </section>
+            <section>
+                <h2>Più si è avanti con il progetto più un requisito errato incide sul costo</h2>
+                <img src="img/prereq-damage.png"/>
+            </section>
+            <section>
+                <h2>Come fare quindi a redarre una lista di requisiti migliore possibile? </h2>
+            </section>
+            <section>
+                <h2>1Definizione del problema</h2>>
+                <p>A problem definition defines what the problem is without any reference to possible
+                    solutions. It’s a simple statement, maybe one or two pages, and it should sound like a
+                    problem. The statement “We can’t keep up with orders for the Gigatron” sounds like
+                    a problem and is a good problem definition. The statement “We need to optimize our
+                    automated data-entry system to keep up with orders for the Gigatron” is a poor prob-
+                    lem definition. It doesn’t sound like a problem; it sounds like a solution.</p>
+            </section>
+            <section>
+                <p>
+                    The problem definition should be in user language, and the problem should be
+                    described from a user’s point of view. It usually should not be stated in technical com-
+                    puter terms.
+                </p>
+            </section>
+            <section>
+                <h2>Redazione di una lista di requisiti/specifiche del progetto</h2>
+                <p>
+                    Requirements describe in detail what a software system is supposed to do, and they
+                    are the first step toward a solution.
+                </p>
+            </section>
+            <section>
+                <p>Paying attention to requirements helps to minimize changes to a system after develop-
+                    ment begins. If you find a coding error during coding, you change a few lines of code
+                    and work goes on. If you find a requirements error during coding, you have to alter
+                    the design to meet the changed requirement. You might have to throw away part of the
+                    old design, and because it has to accommodate code that’s already written, the new
+                    design will take longer than it would have in the first place.</p>
+            </section>
+            <section>
+                <h2>Alcuni elementi da considerare</h2>
+                <ul>
+                    <li>Program Organization</li>
+                    <li>Major Classes</li>
+                    <li>Data design</li>
+                    <li>Business Rules</li>
+                    <li>User Interface design</li>
+                    <li>Resource Management</li>
+                    <lI>Security</li>
+                    <li>Performance</li>
+                    <li>Scalability</li>
+                    <li>Interoperability</li>
+                    <li>Internazionalization</li>
+                    <li>Input/Output</li>
+                    <li>Error Processing</li>
+                </ul>
+            </section>
+            <section>
+                <p>The amount of time to spend on problem definition, requirements, and software architec-
+                    ture varies according to the needs of your project. Generally, a well-run project devotes
+                    about 10 to 20 percent of its effort and about 20 to 30 percent of its schedule to require-
+                    ments, architecture, and up-front planning (McConnell 1998, Kruchten 2000)</p>
+            </section>
+            <section>
+                <h2>Key Points</h2>
+                <p>
+                    The overarching goal of preparing for construction is risk reduction. Be sure
+                    your preparation activities are reducing risks, not increasing them.
+                    ■ If you want to develop high-quality software, attention to quality must be part of
+                    the software-development process from the beginning to the end. Attention to
+                    quality at the beginning has a greater influence on product quality than atten-
+                    tion at the end.
+                    ■ Part of a programmer’s job is to educate bosses and coworkers about the soft-
+                    ware-development process, including the importance of adequate preparation
+                    before programming begins.
+                    ■ The kind of project you’re working on significantly affects construction prereq-
+                    uisites—many projects should be highly iterative, and some should be more
+                    sequential.
+                    ■ If a good problem definition hasn’t been specified, you might be solving the
+                    wrong problem during construction.
+                    If good requirements work hasn’t been done, you might have missed important
+                    details of the problem. Requirements changes cost 20 to 100 times as much in
+                    the stages following construction as they do earlier, so be sure the requirements
+                    are right before you start programming.
+                    ■ If a good architectural design hasn’t been done, you might be solving the right
+                    problem the wrong way during construction. The cost of architectural changes
+                    increases as more code is written for the wrong architecture, so be sure the archi-
+                    tecture is right, too.
+                    ■ Understand what approach has been taken to the construction prerequisites on
+                    your project, and choose your construction approach accordingly.
+                </p>
+            </section>
+        </section>
+        <section id="codequality-organization">
+            <section>
+                <h2>Tecniche per migliorare la qualità</h2>
+                <img src="img/defect-detection-rates.png">
+            </section>
+			<section>
+				<img src="img/defect-detection-rate-cumulative.png">
+			</section>
+        </section>
+        <section>
+            <h1>Ma il codice?</h1>
+        </section>
+
+        <section id="cleancode-how">
+            <section>
+                <h1>
+                    HOW TO LEVEL UP
+                </h1>
+            </section>
+            <section>
+                <h2>TAKE YOUR TIME</h2>
+                <ul>
+                    <li>Refactor frequently</li>
+                    <li>After it works: look at your code and improve it</li>
+                    <li>Have no fear to throw things away</li>
+                </ul>
+            </section>
+            <section>
+                <h2>KEEP GRINDING</h2>
+                <ul>
+                    <li>Always question your code with you and others</li>
+                    <li>Keep studying</li>
+                    <li>Enjoy conferences and stuff</li>
+                </ul>
+            </section>
+            <section>
+                <h2>TAKE A BREAK</h2>
+                <ul>
+                    <li>Sometimes 20 minutes of relax are better than 2 hour of hard-work</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <h2>
+                CLEAN CODE
+            </h2>
+            <p>
+                "Any fool can write code that a computer can understand. Good programmers write code that humans can
+                understand. "
+            </p>
+            <p><strong> Martin Fowler </strong></p>
+        </section>
+        <section id="solid">
+            <section>
+                <h1> SOLID </h1>
+            </section>
+            <section>
+                <h2>Single responsibility principle</h2>
+                <h4>A class should only have one reason to change</h4>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+interface Cart{
+    public function getItems();
+    public function addItem($item);
+    public function removeItem($item);
+    public function calculateTotal();
+    public function processPayment($account,$amount);
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+interface ProductCollection{
+    public function getItems();
+    public function addItem(Product $item);
+    public function removeItem(Product $item);
+}
+
+interface CartPaymentProcessor{
+    public function calculateTotal(ProductCollection $productCollection);
+    public function processPayment(AccountInterface $account, Amount $amount);
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Open-closed principle</h2>
+                <h4>Software entities (classes, modules, functions, etc.) should be open for extensions, but closed for modification.</h4>
+                <h5>"A class should be easy to extend without changes"</h5>
+                <h5>That classes should be extended to change functionality, rather than being altered.</h5>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Liskov substitution principle</h2>
+                <h4>Objects should be replaceable by their subtypes without altering how the program works.</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Interface Segregation Principle</h2>
+                <h4>Many client-specific interfaces are better than one general-purpose interface</h4>
+                <!-- Put more simply: Do not add additional functionality to an existing interface by adding new methods.
+Instead, create a new interface and let your class implement multiple interfaces if needed. -->
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Dependency inversion principle</h2>
+                <h4> classes should depend upon abstractions, not concretions. Essentially, don't depend on concrete classes, depend upon interfaces.</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+        </section>
+
+        <section id="clean-code-names">
+            <section>
+                <h1>Meaningful naming</h1>
+            </section>
+            <section>
+                <h2>Use intention-revealing names</h2>
+                <h4>The name of a variable, function, or class, should answer all the big questions. It
+                    should tell you why it exists, what it does, and how it is used. If a name requires a com-
+                    ment, then the name does not reveal its intent.</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Avoid disinformation</h2>
+                <h4>Don't call something it's not!</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Make meaningful distinctions</h2>
+                <h4>Variable represent different things, and should be named to show that</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Use pronunceable names</h2>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Use searchable names and use constant instead of numeric or string values</h2>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Class names should be nouns</h2>
+                <h4>Classes lead to objects which are things not actions</h4>
+                <h6>Example: Customer,Account,AddressParser,Cart,User,Authenticator</h6>
+            </section>
+            <section>
+                <h2>Method names should start with a verb</h2>
+                <h4>Methods are actions performed on and with things</h4>
+                <h6>Example: postPayment,deletePage,save,parseDocument</h6>
+            </section>
+            <section>
+                <h2>Pick one word per concept</h2>
+                <h4>Using synonyms for the same action, on different objects, is confusing</h4>
+                <h6>Example: fetch/retrieve/get , </h6>
+            </section>
+            <section>
+                <h2>Add meaningful context and don't add context when is not needed </h2>
+                <h4>There are a few names which are meaningful in and of themselves—most are not. Instead,
+                    you need to place names in context for your reader by enclosing them in well-named
+                    classes, functions, or namespaces. When all else fails, then prefixing the name may be nec-
+                    essary as a last resort.</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section id="clean-code-functions">
+            <section>
+                <h1>Funzioni</h1>
+            </section>
+            <section>
+                <h2>Small!</h2>
+                <h4>The first rule of functions is that they should be small. The second rule of functions is that
+                    they should be smaller than that.</h4>
+            </section>
+            <section>
+                <h2>Blocks and indenting!</h2>
+                <h4>This implies that the blocks within if statements, else statements, while statements, and
+                    so on should be one line long. Probably that line should be a function call. Not only does
+                    this keep the enclosing function small, but it also adds documentary value because the
+                    function called within the block can have a nicely descriptive name.</h4>
+            </section>
+            <section>
+                <h2>Do not use else, return before</h2>
+                <h4></h4>
+            </section>
+            <section>
+                <h2>Do one thing</h2>
+                <h4>If the names includes and or doesn't describe all the functionality well it's doing too much</h4>
+            </section>
+            <section>
+                <h2>One level of abstraction per function </h2>
+                <h4></h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Avoid switch  </h2>
+                <h4>Use polymorphism instead</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Use as less arguments as possible. Use objects and arrays when you need many arguments</h2>
+                <h4>The ideal number of arguments for a function is
+                    zero (niladic). Next comes one (monadic), followed
+                    closely by two (dyadic). Three arguments (triadic)
+                    should be avoided where possible. More than three
+                    (polyadic) requires very special justification—and
+                    then shouldn’t be used anyway. </h4>
+            </section>
+            <section>
+                <h2>Don't use flag arguments </h2>
+                <h4>lag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It
+                    immediately complicates the signature of the method, loudly proclaiming that this function
+                    does more than one thing. It does one thing if the flag is true and another if the flag is false!</h4>
+            </section>
+            <section>
+                <h2>Avoid side-effects</h2>
+                <h4></h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Command Query separation</h2>
+                <h4>Functions should either do something or answer something, but not both. Either your
+                    function should change the state of an object, or it should return some information about
+                    that object. Doing both often leads to confusion</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Use Exceptions instead returning error codes </h2>
+                <h4></h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section id="clean-code-comments">
+            <section>
+                <h1>Comments</h1>
+            </section>
+            <section>
+                <h2>Comments = bad code</h2>
+                <h4>The proper use of comments is to compensate for our failure to express ourself in
+                    code.If you need comments to understand what the code is doing then the code is poorly written.
+                </h4>
+            </section>
+            <section>
+                <h2>"Good" comments</h2>
+                <h4>
+                </h4>
+            </section>
+        </section>
+        <section id="clean-code-format">
+            <section>
+                <h1>La formattazione del testo e l'importanza degli standard (CS-fixer)</h1>
+            </section>
+            <section>
+                <h2>Add vertical spaces between concepts</h2>
+                <h4>
+                </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Order methods by depth</h2>
+                <h4>
+                    if method a depends on b and then c that is the order in which they should appear
+                </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Order methods by conceptual affinity</h2>
+                <h4>
+                    If two methods do similar things put them close together
+                </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Keep horizontal space short . max 120 char</h2>
+                <h4>
+                </h4>
+            </section>
+            <section>
+                <h2>Space between operators and assignment </h2>
+                <h4>
+                </h4>
+            </section>
+            <section>
+                <h2>Have team standards</h2>
+                <h4>
+                    PHP CS FIXER
+                </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section id="clean-code-errorhandling">
+            <section>
+                <h1>Error Handling</h1>
+            </section>
+            <section>
+                <h2>Use exceptions rather than return codes</h2>
+                <h4>
+
+                </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Write your try catch statement first</h2>
+                <h4>
+                    In a way, try blocks are like transactions. Your catch has to leave your program in a
+                    consistent state, no matter what happens in the try . For this reason it is good practice to
+                    start with a try - catch - finally statement when you are writing code that could throw
+                    exceptions. This helps you define what the user of that code should expect, no matter what
+                    goes wrong with the code that is executed in the try .
+                </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Don't return null</h2>
+                <h4>
+
+                </h4>
+            </section>
+            <section>
+                <h2>Don't pass null</h2>
+                <h4>
+
+                </h4>
+            </section>
+        </section>
+        <section id="clean-code-classes">
+            <section>
+                <h1>Classi</h1>
+            </section>
+        </section>
+        <section id="php-tools">
+            <section>
+                <h1>PHP QUALITY TOOLS</h1>
+            </section>
+            <section>
+                <h1>PHP QUALITY TOOLS</h1>
+            </section>
+            <section>
+                <h1>PHP QUALITY TOOLS</h1>
+            </section>
+            <section>
+                <h1>PHP QUALITY TOOLS</h1>
+            </section>
+        </section>
+        <section>
+            <h1>Thanks!</h1>
+        </section>
+        <section>
+            <h1>Q&A</h1>
+        </section>
+    </div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		dependencies: [
+			{src: "plugin/markdown/marked.js"},
+			{src: "plugin/markdown/markdown.js"},
+			{src: "plugin/notes/notes.js", async: true},
+			{src: "plugin/highlight/highlight.js", async: true}
+		]
+	});
+</script>
+</body>
 </html>
