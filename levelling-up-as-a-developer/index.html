@@ -90,7 +90,7 @@
                 </ul>
             </div>
         </section>
-        <section>
+        <section id="sources">
             <h1>Fonti</h1>
             <ul>
                 <li>
@@ -128,7 +128,7 @@
             <section>
                 <h2>TRUTHS ABOUT CODING</h2>
                 <ul>
-                    <li>time reading > time writing</li>
+                    <li>Time reading > Time writing</li>
                     <li>Ti dimentichi il tuo codice in fretta</li>
                     <lI>I membri del tuo team pensano diversamente da te</lI>
                     <li>L'unica costante è il cambiamento</li>
@@ -144,26 +144,26 @@
                 <h2>CLEAN CODE SAVES TIME</h2>
             </section>
         </section>
-        <section
-                data-background-image="img/meme-01.jpg"
-                data-background-size="contain"
+        <section id="meme-01"
+                 data-background-image="img/meme-01.jpg"
+                 data-background-size="contain"
         >
             <aside class="notes">
                 Questa situazione .. a me è successo più di una volta ve lo assicuro.
             </aside>
         </section>
-        <section
-                data-background-image="img/meme-02.png"
-                data-background-size="contain"
+        <section id="meme-02"
+                 data-background-image="img/meme-02.png"
+                 data-background-size="contain"
         >
             <aside class="notes">
                 Il codice può nascondere delle cose meravigliose al suo interno .
             </aside>
         </section>
-        <section>
+        <section id="software-building">
             <h2>Costruire software è difficile.</h2>
         </section>
-        <section>
+        <section id="software-activities">
             <h2>Attività</h2>
             <div style="float:left;width:50%">
                 <img style="width:100%" src="img/fasi-sviluppo.png"/>
@@ -183,40 +183,37 @@
         </section>
         <section id="prerequisites">
             <section>
-                <h1>Analisi dei requisiti</h1>
+                <h1>L'importanza dei requisiti</h1>
+            </section>
+            <section>
+                <h3>
+                    I requisiti devono descrivere dettagliatamente tutto quello che l'applicazione deve fare
+                    e sono il primo passo verso una possibile soluzione.
+                </h3>
+            </section>
+            <section>
+                <p> Il successo di un progetto è già determinato prima ancora che iniziamo a scrivere una riga di
+                    codice.<br>
+                    Se le basi non sono solide il massimo che si può fare durante la costruzione del codice è cercare
+                    di contenere i danni al minimo.</p>
             </section>
             <section>
                 <h2>Errori comuni</h2>
                 <ul>
-                    <li>Non sappiamo prendere le specifiche nel modo corretto</li>
-                    <li>Vogliamo iniziare subito a programmare e quindi passiamo subito al codice vero e proprio</li>
-                    <li>A volte il problema è manageriale ed è dovuto a una mancanza di conoscenza dell'ambito</li>
+                    <li>Non abbiamo le competenze per analizzare i requisiti del progetto nel modo corretto</li>
+                    <li>Vogliamo iniziare subito a programmare e quindi passiamo direttamente alla scrittura del
+                        codice
+                    </li>
                     <aside class="notes">
-                        Part of your job as a technical employee is to educate the nontechnical people around
-                        you about the development process. This section will help you deal with managers
-                        and bosses who have not yet seen the light. It’s an extended argument for doing
-                        requirements and architecture—getting the critical aspects right—before you begin cod-
-                        ing, testing, and debugging. Learn the argument, and then sit down with your boss
-                        and have a heart-to-heart talk about the programming process.
 
-                        One of the key ideas in effective programming is that preparation is important. It
-                        makes sense that before you start working on a big project, you should plan the
-                        project. Big projects require more planning; small projects require less. From a man-
-                        agement point of view, planning means determining the amount of time, number of
-                        people, and number of computers the project will need. From a technical point of
-                        view, planning means understanding what you want to build so that you don’t waste
-                        money building the wrong thing. Sometimes users aren’t entirely sure what they want
-                        at first, so it might take more effort than seems ideal to find out what they really want.
-                        But that’s cheaper than building the wrong thing, throwing it away, and starting over.
-                        It’s also important to think about how to build the system before you begin to build it.
-                        You don’t want to spend a lot of time and money going down blind alleys when
-                        there’s no need to, especially when that increases costs.
                     </aside>
                 </ul>
             </section>
             <section>
-                <h2>E' fondamentale enfatizzare la qualità fin dall'inizio del progetto, anche imparare a prendere
-                    requisiti deve essere una skill che va raggiunta</h2>
+                <p>"If you want to develop high-quality software, attention to quality must be part of
+                    the software-development process from the beginning to the end. Attention to
+                    quality at the beginning has a greater influence on product quality than attention at the end."
+                </p>
                 <aside class="notes">
                     If you emphasize quality at the beginning of the project, you plan for, require, and
                     design a high-quality product. If you start the process with designs for a Pontiac Aztek,
@@ -234,49 +231,24 @@
                 </aside>
             </section>
             <section>
-                <h2>Dedicare il tempo giusto in base al tipo di progetto su cui si deve lavorare.</h2>
-            </section>
-            <section>
                 <h2>Più si è avanti con il progetto più un requisito errato incide sul costo</h2>
                 <img src="img/prereq-damage.png"/>
-            </section>
-            <section>
-                <h2>Come fare quindi a redarre una lista di requisiti migliore possibile? </h2>
-            </section>
-            <section>
-                <h2>1Definizione del problema</h2>>
-                <p>A problem definition defines what the problem is without any reference to possible
-                    solutions. It’s a simple statement, maybe one or two pages, and it should sound like a
-                    problem. The statement “We can’t keep up with orders for the Gigatron” sounds like
-                    a problem and is a good problem definition. The statement “We need to optimize our
-                    automated data-entry system to keep up with orders for the Gigatron” is a poor prob-
-                    lem definition. It doesn’t sound like a problem; it sounds like a solution.</p>
-            </section>
-            <section>
-                <p>
-                    The problem definition should be in user language, and the problem should be
-                    described from a user’s point of view. It usually should not be stated in technical com-
-                    puter terms.
-                </p>
-            </section>
-            <section>
-                <h2>Redazione di una lista di requisiti/specifiche del progetto</h2>
-                <p>
-                    Requirements describe in detail what a software system is supposed to do, and they
-                    are the first step toward a solution.
-                </p>
-            </section>
-            <section>
-                <p>Paying attention to requirements helps to minimize changes to a system after develop-
+                <aside class="notes">Paying attention to requirements helps to minimize changes to a system after
+                    develop-
                     ment begins. If you find a coding error during coding, you change a few lines of code
                     and work goes on. If you find a requirements error during coding, you have to alter
                     the design to meet the changed requirement. You might have to throw away part of the
                     old design, and because it has to accommodate code that’s already written, the new
-                    design will take longer than it would have in the first place.</p>
+                    design will take longer than it would have in the first place.
+                </aside>
+            </section>
+            <section>
+                <h4>Imparare a analizzare le funzionalità di un progetto e redarre una lista il più completa possibile
+                    possibile di requisiti è quindi importante quanto saper scrivere codice</h4>
             </section>
             <section>
                 <h2>Alcuni elementi da considerare</h2>
-                <ul>
+                <ul style="font-size:1.5rem">
                     <li>Program Organization</li>
                     <li>Major Classes</li>
                     <li>Data design</li>
@@ -292,55 +264,19 @@
                     <li>Error Processing</li>
                 </ul>
             </section>
-            <section>
-                <p>The amount of time to spend on problem definition, requirements, and software architec-
-                    ture varies according to the needs of your project. Generally, a well-run project devotes
-                    about 10 to 20 percent of its effort and about 20 to 30 percent of its schedule to require-
-                    ments, architecture, and up-front planning (McConnell 1998, Kruchten 2000)</p>
-            </section>
-            <section>
-                <h2>Key Points</h2>
-                <p>
-                    The overarching goal of preparing for construction is risk reduction. Be sure
-                    your preparation activities are reducing risks, not increasing them.
-                    ■ If you want to develop high-quality software, attention to quality must be part of
-                    the software-development process from the beginning to the end. Attention to
-                    quality at the beginning has a greater influence on product quality than atten-
-                    tion at the end.
-                    ■ Part of a programmer’s job is to educate bosses and coworkers about the soft-
-                    ware-development process, including the importance of adequate preparation
-                    before programming begins.
-                    ■ The kind of project you’re working on significantly affects construction prereq-
-                    uisites—many projects should be highly iterative, and some should be more
-                    sequential.
-                    ■ If a good problem definition hasn’t been specified, you might be solving the
-                    wrong problem during construction.
-                    If good requirements work hasn’t been done, you might have missed important
-                    details of the problem. Requirements changes cost 20 to 100 times as much in
-                    the stages following construction as they do earlier, so be sure the requirements
-                    are right before you start programming.
-                    ■ If a good architectural design hasn’t been done, you might be solving the right
-                    problem the wrong way during construction. The cost of architectural changes
-                    increases as more code is written for the wrong architecture, so be sure the archi-
-                    tecture is right, too.
-                    ■ Understand what approach has been taken to the construction prerequisites on
-                    your project, and choose your construction approach accordingly.
-                </p>
-            </section>
         </section>
-        <section id="codequality-organization">
-            <section>
-                <h2>Tecniche per migliorare la qualità</h2>
-                <img src="img/defect-detection-rates.png">
-            </section>
-			<section>
-				<img src="img/defect-detection-rate-cumulative.png">
-			</section>
-        </section>
-        <section>
+        <!--        <section id="codequality-organization">-->
+        <!--            <section>-->
+        <!--                <h2>Tecniche per migliorare la qualità</h2>-->
+        <!--                <img src="img/defect-detection-rates.png">-->
+        <!--            </section>-->
+        <!--			<section>-->
+        <!--				<img src="img/defect-detection-rate-cumulative.png">-->
+        <!--			</section>-->
+        <!--        </section>-->
+        <section id="wtf">
             <h1>Ma il codice?</h1>
         </section>
-
         <section id="cleancode-how">
             <section>
                 <h1>
@@ -369,8 +305,13 @@
                     <li>Sometimes 20 minutes of relax are better than 2 hour of hard-work</li>
                 </ul>
             </section>
+            <section>
+                <h2>The Clean Coder Rule</h2>
+                <h4>   Always leave the code
+                    cleaner than you found it.</h4>
+            </section>
         </section>
-        <section>
+        <section id="martin-quote">
             <h2>
                 CLEAN CODE
             </h2>
@@ -379,6 +320,67 @@
                 understand. "
             </p>
             <p><strong> Martin Fowler </strong></p>
+        </section>
+        <section id="unknown-quote">
+            <h2>
+                How do you write Clean Code?
+            </h2>
+            <p>
+                "Imagine that the developer who comes after you is a homicidal maniac who knows where you live."
+            </p>
+            <p><strong> Unknown </strong></p>
+        </section>
+        <section id="howto">
+            <section>
+                <h3>Desirable characteristics of a design</h3>
+                <ul>
+                    <li>Minimal complexity</li>
+                    <li>Ease of maintenance</li>
+                    <li>Loose coupling</li>
+                    <li>Extensibility</li>
+                    <li>Portability</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Software’s Primary Technical Imperative: Managing Complexity</h2>
+            </section>
+            <section>
+                <img src="img/design-levels.png">
+            </section>
+            <section>
+                <ul>
+                    <li>Identify the objects and their attributes (methods and data)</li>
+                    <li>Determine what can be done to each object.</li>
+                    <li>Determine what each object is allowed to do to other objects.</li>
+                    <li>Determine the parts of each object that will be visible to other objects—which
+                        parts will be public and which will be private.
+                    </li>
+                    <li>Define each object’s public interface.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Form Consistent Abstractions and hide informations</h2>
+                <h4>Abstraction is the ability to engage with a concept while safely ignoring some of its
+                    details—handling different details at different levels
+                </h4>
+            </section>
+            <section>
+                <h2>Keep Coupling Loose</h2>
+                <h4>Coupling describes how tightly a class or routine is related to other classes or rou-
+                    tines. The goal is to create classes and routines with small, direct, visible, and flexible
+                    relations to other classes and routines, which is known as “loose coupling.”
+                </h4>
+            </section>
+            <section>
+                <h3>Look for common design patterns</h3>
+                <img style="height:50vh" src="img/design-patterns.png">
+                <aside class="notes">
+                    Design patterns provide the cores of ready-made solutions that can be used to solve
+                    many of software’s most common problems. Some software problems require solutions
+                    that are derived from first principles. But most problems are similar to past problems,
+                    and those can be solved using similar solutions, or patterns.
+                </aside>
+            </section>
         </section>
         <section id="solid">
             <section>
@@ -419,39 +421,146 @@ interface CartPaymentProcessor{
             </section>
             <section>
                 <h2>Open-closed principle</h2>
-                <h4>Software entities (classes, modules, functions, etc.) should be open for extensions, but closed for modification.</h4>
-                <h5>"A class should be easy to extend without changes"</h5>
-                <h5>That classes should be extended to change functionality, rather than being altered.</h5>
+                <h4>A Class should be open for extensions, but closed for modification.</h4>
+                <aside class="notes">
+                    "A class should be easy to extend without changes"
+                    That classes should be extended to change functionality, rather than being altered.
+                </aside>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+class Programmer
+{
+    public function code()
+    {
+      //[...] DO STUFF
+    }
+}
+class Tester
+{
+    public function test()
+    {
+      //[...] DO STUFF
+    }
+}
+class ProjectManagement
+{
+    public function process($member)
+    {
+        if ($member instanceof Programmer) {
+            $member->code();
+        } elseif ($member instanceof Tester) {
+            $member->test();
+        };
+        throw new Exception('Invalid input member');
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+interface Workable
+{
+    public function work();
+}
+class Programmer implements Workable
+{
+    public function work()
+    {
+        //[...] DO STUFF
+    }
+}
+class Tester implements Workable
+{
+    public function work()
+    {
+        //[...] DO STUFF
+    }
+}
+class ProjectManagement
+{
+    public function process(Workable $member)
+    {
+        return $member->work();
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
                 <h2>Liskov substitution principle</h2>
                 <h4>Objects should be replaceable by their subtypes without altering how the program works.</h4>
+                <aside class="notes">
+                    we must make sure that new derived classes are extending the base classes without changing their
+                    behavior.
+                </aside>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+class Rectangle {
 
+    private $topLeft;
+    private $width;
+    private $height;
+
+    public function setHeight($height) {
+        $this->height = $height;
+    }
+
+    public function getHeight() {
+        return $this->height;
+    }
+
+    public function setWidth($width) {
+        $this->width = $width;
+    }
+
+    public function getWidth() {
+        return $this->width;
+    }
+    public function area() {
+    return $this->width * $this->height;
+    }
+
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+class Square extends Rectangle {
+
+    public function setHeight($value) {
+        $this->width = $value;
+        $this->height = $value;
+    }
+
+    public function setWidth($value) {
+        $this->width = $value;
+        $this->height = $value;
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+ function areaVerifier(Rectangle $r) {
+        $r->setWidth(5);
+        $r->setHeight(4);
 
+        if($r->area() != 20) {
+            throw new Exception('Bad area!');
+        }
+
+        return true;
+    }
                     </code>
                 </pre>
             </section>
@@ -464,37 +573,160 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+interface Workable
+{
+    public function canCode();
+    public function code();
+    public function test();
+}
+class Programmer implements Workable
+{
+    public function canCode()
+    {
+        return true;
+    }
+    public function code()
+    {
+        return 'coding';
+    }
+    public function test()
+    {
+        return 'testing in localhost';
+    }
+}
+class Tester implements Workable
+{
+    public function canCode()
+    {
+        return false;
+    }
+    public function code()
+    {
+         throw new Exception('Opps! I can not code');
+    }
+    public function test()
+    {
+        return 'testing in test server';
+    }
+}
+class ProjectManagement
+{
+    public function processCode(Workable $member)
+    {
+        if ($member->canCode()) {
+            $member->code();
+        }
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+interface Codeable
+{
+    public function code();
+}
+interface Testable
+{
+    public function test();
+}
+class Programmer implements Codeable, Testable
+{
+    public function code()
+    {
+        return 'coding';
+    }
+    public function test()
+    {
+        return 'testing in localhost';
+    }
+}
+class Tester implements Testable
+{
+    public function test()
+    {
+        return 'testing in test server';
+    }
+}
+class ProjectManagement
+{
+    public function processCode(Codeable $member)
+    {
+        $member->code();
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
                 <h2>Dependency inversion principle</h2>
-                <h4> classes should depend upon abstractions, not concretions. Essentially, don't depend on concrete classes, depend upon interfaces.</h4>
+                <h4>Depend upon abstractions, not concretions.</h4>
+                <aside class="notes">
+                    Essentially, don't depend on concrete classes, depend upon interfaces.
+                </aside>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+class SmtpMailer
+{
+    //methods for mailer
+     public function send(string $message){
+         //send message through smtp
+     }
+}
+class WelcomeMessageSender
+{
+    private $smtpMailer;
+    public function __construct(SmtpMailer $mailer)
+    {
+        $this->smtpMailer = $mailer;
+    }
+    public function sendMessage(){
+        $this->smtpMailer->send("WELCOME TO PUG SONDRIO!");
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+interface MailerInterface
+{
+    public function send(string $message);
+}
+class SmtpMailer implements MailerInterface
+{
+    public function send(string $message)
+    {
+        // Send an email via SMTP
+    }
+}
+class SendSlackMailer implements MailerInterface
+{
+    public function send(string $message)
+    {
+        // Send a message via Slack
+    }
+}
+class WelcomeMessageSender
+{
+    private $mailer;
+    public function __construct(MailerInterface $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+    public function sendMessage(){
+        $this->maler->send("WELCOME TO PUG SONDRIO!");
+    }
+}
                     </code>
                 </pre>
             </section>
         </section>
-
         <section id="clean-code-names">
             <section>
                 <h1>Meaningful naming</h1>
@@ -502,20 +734,96 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                 <h2>Use intention-revealing names</h2>
                 <h4>The name of a variable, function, or class, should answer all the big questions. It
-                    should tell you why it exists, what it does, and how it is used. If a name requires a com-
-                    ment, then the name does not reveal its intent.</h4>
+                    should tell you why it exists, what it does, and how it is used. If a name requires a comment,
+                    then the name does not reveal its intent.</h4>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+//That's a Drupal 8 trait
+protected function t($string, array $args = [], array $options = []) {
+    //do stuff
+}
                     </code>
                 </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+ /**
+   * Translates a string to the current language or to a given language.
+   *
+   * See \Drupal\Core\StringTranslation\TranslatableMarkup::__construct() for
+   * important security information and usage guidelines.
+   *
+   * In order for strings to be localized, make them available in one of the
+   * ways supported by the
+   * @link https://www.drupal.org/node/322729 Localization API @endlink. When
+   * possible, use the \Drupal\Core\StringTranslation\StringTranslationTrait
+   * $this->t(). Otherwise create a new
+   * \Drupal\Core\StringTranslation\TranslatableMarkup object.
+   *
+   * @param string $string
+   *   A string containing the English text to translate.
+   * @param array $args
+   *   (optional) An associative array of replacements to make after
+   *   translation. Based on the first character of the key, the value is
+   *   escaped and/or themed. See
+   *   \Drupal\Component\Render\FormattableMarkup::placeholderFormat() for
+   *   details.
+   * @param array $options
+   *   (optional) An associative array of additional options, with the following
+   *   elements:
+   *   - 'langcode' (defaults to the current language): A language code, to
+   *     translate to a language other than what is used to display the page.
+   *   - 'context' (defaults to the empty context): The context the source
+   *     string belongs to. See the
+   *     @link i18n Internationalization topic @endlink for more information
+   *     about string contexts.
+   *
+   * @return \Drupal\Core\StringTranslation\TranslatableMarkup
+   *   An object that, when cast to a string, returns the translated string.
+   *
+   * @see \Drupal\Component\Render\FormattableMarkup::placeholderFormat()
+   * @see \Drupal\Core\StringTranslation\TranslatableMarkup::__construct()
+   *
+   * @ingroup sanitization
+   */
+  protected function t($string, array $args = [], array $options = []) {
+    //[...]
+  }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+  protected function translate(string $stringToTranslate, array $args = [], array $options = []):string {
+    //[...]
+  }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+//BAD
+public function calculate(array $array){
+    $t=0;
+    foreach($array as $r){
+        $t+=$r->getPrice()*$r->getQuantity();
+    }
+    return $t;
+}
 
+//GOOD
+public function calculateProductsTotal(ProductCollection $products){
+    $total = 0;
+    foreach($products as $product){
+        $total += $product->getPrice() * $product->getQuantity();
+    }
+    return $total;
+}
                     </code>
                 </pre>
             </section>
@@ -526,13 +834,17 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                  <pre class="stretch">
                     <code class="php">
+class Collection{
+    //used for collection of different types of elements
+}
 
-                    </code>
-                </pre>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
+class ArrayCollection extends Collection{
+    //collection of Array
+}
+
+public function something(){
+    $userCollection = []; //That's not a collection! Better call that $userGroups or $userArray
+}
 
                     </code>
                 </pre>
@@ -544,14 +856,24 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                  <pre class="stretch">
                     <code class="php">
+class ProductInfo{
+    //[...]
+}
 
-                    </code>
-                </pre>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
+class ProductData{ //you have made the names different without making them mean anything different
 
+    //[...]
+}
+
+//BAD
+public function copyFileInDirectory($path,$path){
+
+}
+
+//GOOD
+public function copyFileInDirectory(string $sourceFilePath,string $destinationDirectoryPath){
+
+}
                     </code>
                 </pre>
             </section>
@@ -561,31 +883,20 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                  <pre class="stretch">
                     <code class="php">
+//BAD
+class DtaRcrd {
+    private $genymdhms;
+    private $modymdhms;
+    private $pszqint;
+    /* ... */
+};
 
-                    </code>
-                </pre>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
-            </section>
-            <section>
-                <h2>Use searchable names and use constant instead of numeric or string values</h2>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
+//GOOD
+class Customer {
+    private $generationTimestamp;
+    private $modificationTimestamp;;
+    private $recordId;
+};
                     </code>
                 </pre>
             </section>
@@ -602,33 +913,55 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                 <h2>Pick one word per concept</h2>
                 <h4>Using synonyms for the same action, on different objects, is confusing</h4>
-                <h6>Example: fetch/retrieve/get , </h6>
+                <h6>Example: fetch/retrieve/get </h6>
             </section>
             <section>
                 <h2>Add meaningful context and don't add context when is not needed </h2>
                 <h4>There are a few names which are meaningful in and of themselves—most are not. Instead,
                     you need to place names in context for your reader by enclosing them in well-named
-                    classes, functions, or namespaces. When all else fails, then prefixing the name may be nec-
-                    essary as a last resort.</h4>
+                    classes, functions, or namespaces. When all else fails, then prefixing the name may be
+                    necessary as a last resort.</h4>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+class Address{
 
+    private $name;
+    private $lastName;
+    private $street;
+    private $postalCode;
+    // enough context
+}
+
+public function generateReceipt(){
+    // [...]
+
+    $name = "something"; //Is that the name of what? better write $addressName;
+}
                     </code>
                 </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+class Product{
+    public function addDiscountCode($code){
+        // ...enough context
+    }
+}
 
+//prefix needed
+public function addProductDiscountCode(Product $product, string $code){
+
+}
                     </code>
                 </pre>
             </section>
         </section>
         <section id="clean-code-functions">
             <section>
-                <h1>Funzioni</h1>
+                <h1>Functions</h1>
             </section>
             <section>
                 <h2>Small!</h2>
@@ -636,48 +969,72 @@ Instead, create a new interface and let your class implement multiple interfaces
                     they should be smaller than that.</h4>
             </section>
             <section>
-                <h2>Blocks and indenting!</h2>
-                <h4>This implies that the blocks within if statements, else statements, while statements, and
-                    so on should be one line long. Probably that line should be a function call. Not only does
+                <ul>
+                    <li>Functions should fit on a single screen</li>
+                    <li>Prefer method no longer than 10 lines</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Blocks within statements should be one line long</h2>
+                <h4>Probably that line should be a function call. Not only does
                     this keep the enclosing function small, but it also adds documentary value because the
                     function called within the block can have a nicely descriptive name.</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+//EXAMPLE NEEDED
+                    </code>
+                </pre>
             </section>
             <section>
                 <h2>Do not use else, return before</h2>
                 <h4></h4>
             </section>
             <section>
-                <h2>Do one thing</h2>
+                 <pre class="stretch">
+                    <code class="php">
+//EXAMPLE NEEDED
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Do one thing!</h2>
                 <h4>If the names includes and or doesn't describe all the functionality well it's doing too much</h4>
             </section>
             <section>
+                 <pre class="stretch">
+                    <code class="php">
+//EXAMPLE NEEDED
+                    </code>
+                </pre>
+            </section>
+            <section>
                 <h2>One level of abstraction per function </h2>
-                <h4></h4>
+                <h4>Don't mix high-level abstract stuff with low-level detail code</h4>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+//EXAMPLE NEEDED
                     </code>
                 </pre>
+            </section>
+            <section>
+                <h2>The stepdown rule </h2>
+                <h4>The code should be readable from top to bottom, descending one level of abstraction per function. </h4>
+                <h6>A caller function should always reside above the callee function</h6>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+//EXAMPLE NEEDED
                     </code>
                 </pre>
             </section>
             <section>
-                <h2>Avoid switch  </h2>
+                <h2>Avoid switch </h2>
                 <h4>Use polymorphism instead</h4>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
             </section>
             <section>
                  <pre class="stretch">
@@ -689,17 +1046,22 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                 <h2>Use as less arguments as possible. Use objects and arrays when you need many arguments</h2>
                 <h4>The ideal number of arguments for a function is
-                    zero (niladic). Next comes one (monadic), followed
-                    closely by two (dyadic). Three arguments (triadic)
-                    should be avoided where possible. More than three
-                    (polyadic) requires very special justification—and
-                    then shouldn’t be used anyway. </h4>
+                    zero . Three arguments should be avoided where possible. More than three
+                     requires very special justification—and then shouldn’t be used anyway. </h4>
             </section>
             <section>
                 <h2>Don't use flag arguments </h2>
-                <h4>lag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It
+                <h4>Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It
                     immediately complicates the signature of the method, loudly proclaiming that this function
-                    does more than one thing. It does one thing if the flag is true and another if the flag is false!</h4>
+                    does more than one thing. It does one thing if the flag is true and another if the flag is
+                    false!</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+//EXAMPLE NEEDED
+                    </code>
+                </pre>
             </section>
             <section>
                 <h2>Avoid side-effects</h2>
@@ -713,24 +1075,10 @@ Instead, create a new interface and let your class implement multiple interfaces
                 </pre>
             </section>
             <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
-            </section>
-            <section>
                 <h2>Command Query separation</h2>
                 <h4>Functions should either do something or answer something, but not both. Either your
                     function should change the state of an object, or it should return some information about
                     that object. Doing both often leads to confusion</h4>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
             </section>
             <section>
                  <pre class="stretch">
@@ -765,18 +1113,21 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                 <h2>Comments = bad code</h2>
                 <h4>The proper use of comments is to compensate for our failure to express ourself in
-                    code.If you need comments to understand what the code is doing then the code is poorly written.
+                    code.<br>If you need comments to understand what the code is doing then the code is poorly written.
                 </h4>
             </section>
             <section>
-                <h2>"Good" comments</h2>
-                <h4>
-                </h4>
+                <h2>Good comments</h2>
+                <ul>
+                    <li>Can be used to describe intent or clarification </li>
+                    <li>Can be used to give warnings or consequences</li>
+                    <li>Can be used for TODOs <br> <b>but these should be temporary!</b></li>
+                </ul>
             </section>
         </section>
         <section id="clean-code-format">
             <section>
-                <h1>La formattazione del testo e l'importanza degli standard (CS-fixer)</h1>
+                <h1>Formatting</h1>
             </section>
             <section>
                 <h2>Add vertical spaces between concepts</h2>
@@ -817,19 +1168,15 @@ Instead, create a new interface and let your class implement multiple interfaces
                 </pre>
             </section>
             <section>
-                <h2>Keep horizontal space short . max 120 char</h2>
+                <h2>Limit line length</h2>
                 <h4>
+                    Don't make readers scroll horizontally if you care for your life
                 </h4>
             </section>
             <section>
                 <h2>Space between operators and assignment </h2>
                 <h4>
-                </h4>
-            </section>
-            <section>
-                <h2>Have team standards</h2>
-                <h4>
-                    PHP CS FIXER
+                    A bit of horizonal spacing improve readability
                 </h4>
             </section>
             <section>
@@ -838,6 +1185,18 @@ Instead, create a new interface and let your class implement multiple interfaces
 
                     </code>
                 </pre>
+            </section>
+            <section>
+                <h2>Have team standards</h2>
+                <h4>
+                    Adopt one standard as a team for naming, spacing , and all formatting stuff.
+                </h4>
+            </section>
+            <section>
+                <h2>PHP CS FIXER</h2>
+                <h4>
+
+                </h4>
             </section>
         </section>
         <section id="clean-code-errorhandling">
@@ -861,11 +1220,14 @@ Instead, create a new interface and let your class implement multiple interfaces
                 <h2>Write your try catch statement first</h2>
                 <h4>
                     In a way, try blocks are like transactions. Your catch has to leave your program in a
-                    consistent state, no matter what happens in the try . For this reason it is good practice to
+                    consistent state, no matter what happens in the try .
+                </h4>
+                <aside class="notes">
+                    For this reason it is good practice to
                     start with a try - catch - finally statement when you are writing code that could throw
                     exceptions. This helps you define what the user of that code should expect, no matter what
                     goes wrong with the code that is executed in the try .
-                </h4>
+                </aside>
             </section>
             <section>
                  <pre class="stretch">
@@ -877,8 +1239,16 @@ Instead, create a new interface and let your class implement multiple interfaces
             <section>
                 <h2>Don't return null</h2>
                 <h4>
-
+                    If you are tempted to return null from
+                    a method, consider throwing an exception or returning a SPECIAL CASE object instead
                 </h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
             </section>
             <section>
                 <h2>Don't pass null</h2>
@@ -886,10 +1256,65 @@ Instead, create a new interface and let your class implement multiple interfaces
 
                 </h4>
             </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
+            </section>
         </section>
         <section id="clean-code-classes">
             <section>
-                <h1>Classi</h1>
+                <h1>Classes</h1>
+            </section>
+            <section>
+                <h2>Class Organization</h2>
+                <section>
+                 <pre class="stretch">
+                    <code class="php">
+ //public static constants
+ //private static variables
+ //private instance variables
+ //public functions
+ //private functions called by a public function right after the public function itself
+                    </code>
+                </pre>
+                </section>
+            </section>
+            <section>
+                <h2>Encapsulation</h2>
+                <h4>
+                    Keep variables and functions private if it's not needed to be public or protected. Information hiding is the way
+                </h4>
+            </section>
+            <section>
+                <h2>Small!</h2>
+                <h4>
+                    Keep Classes small by following the single principle responsibility. Class should have only one,
+                    and only one reason to change.
+                </h4>
+            </section>
+            <section>
+                <h2>Cohesion</h2>
+                <h4>
+
+                </h4>
+                <aside class="notes">
+                    Classes should have a small number of instance variables. Each of the methods of a class
+                    should manipulate one or more of those variables. In general the more variables a method
+                    manipulates the more cohesive that method is to its class. A class in which each variable is
+                    used by each method is maximally cohesive.When cohesion is high, it
+                    means that the methods and variables of the class are co-dependent and hang together as a
+                    logical whole.
+                </aside>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+                    </code>
+                </pre>
             </section>
         </section>
         <section id="php-tools">
@@ -897,13 +1322,24 @@ Instead, create a new interface and let your class implement multiple interfaces
                 <h1>PHP QUALITY TOOLS</h1>
             </section>
             <section>
-                <h1>PHP QUALITY TOOLS</h1>
+                <h2>PHP STORM</h2>
+                <h4></h4>
             </section>
             <section>
-                <h1>PHP QUALITY TOOLS</h1>
+                <h2>PHP CS FIXER</h2>
+                <h4></h4>
             </section>
             <section>
-                <h1>PHP QUALITY TOOLS</h1>
+                <h2>PHP MESS DETECTOR</h2>
+                <h4></h4>
+            </section>
+            <section>
+                <h2>PHP CODE SNIFFER</h2>
+                <h4></h4>
+            </section>
+            <section>
+                <h2>PHP STAN</h2>
+                <h4></h4>
             </section>
         </section>
         <section>
