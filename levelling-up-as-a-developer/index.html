@@ -160,11 +160,8 @@
                 Il codice può nascondere delle cose meravigliose al suo interno .
             </aside>
         </section>
-        <section id="software-building">
-            <h2>Costruire software è difficile.</h2>
-        </section>
         <section id="software-activities">
-            <h2>Attività</h2>
+            <h2>Costruire software è difficile.</h2>
             <div style="float:left;width:50%">
                 <img style="width:100%" src="img/fasi-sviluppo.png"/>
             </div>
@@ -361,14 +358,14 @@
             <section>
                 <h2>Form Consistent Abstractions and hide informations</h2>
                 <h4>Abstraction is the ability to engage with a concept while safely ignoring some of its
-                    details—handling different details at different levels
+                    details
                 </h4>
             </section>
             <section>
                 <h2>Keep Coupling Loose</h2>
-                <h4>Coupling describes how tightly a class or routine is related to other classes or rou-
-                    tines. The goal is to create classes and routines with small, direct, visible, and flexible
-                    relations to other classes and routines, which is known as “loose coupling.”
+                <h4>Coupling describes how tightly a class is related to other classes.
+                    The goal is to create classes and functions with small, direct, visible, and flexible
+                    relations to other classes and functions.
                 </h4>
             </section>
             <section>
@@ -419,6 +416,72 @@ interface ProductCollection{
 interface CartPaymentProcessor{
     public function calculateTotal(ProductCollection $productCollection);
     public function processPayment(AccountInterface $account, Amount $amount);
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+class UserSettings
+{
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    public function changeSettings(array $settings): void
+    {
+        if ($this->verifyCredentials()) {
+            // ...
+        }
+    }
+
+    private function verifyCredentials(): bool
+    {
+        // ...
+    }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+class UserAuth
+{
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    public function verifyCredentials(): bool
+    {
+        // ...
+    }
+}
+
+class UserSettings
+{
+    private $user;
+    private $auth;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+        $this->auth = new UserAuth($user);
+    }
+
+    public function changeSettings(array $settings): void
+    {
+        if ($this->auth->verifyCredentials()) {
+            // ...
+        }
+    }
 }
                     </code>
                 </pre>
@@ -505,61 +568,52 @@ class ProjectManagement
             <section>
                  <pre class="stretch">
                     <code class="php">
-class Rectangle {
+class Rectangle
+{
+    protected $width = 0;
+    protected $height = 0;
 
-    private $topLeft;
-    private $width;
-    private $height;
-
-    public function setHeight($height) {
-        $this->height = $height;
-    }
-
-    public function getHeight() {
-        return $this->height;
-    }
-
-    public function setWidth($width) {
+    public function setWidth(int $width): void
+    {
         $this->width = $width;
     }
 
-    public function getWidth() {
-        return $this->width;
-    }
-    public function area() {
-    return $this->width * $this->height;
+    public function setHeight(int $height): void
+    {
+        $this->height = $height;
     }
 
+    public function getArea(): int
+    {
+        return $this->width * $this->height;
+    }
 }
+
+class Square extends Rectangle
+{
+    public function setWidth(int $width): void
+    {
+        $this->width = $this->height = $width;
+    }
+
+    public function setHeight(int $height): void
+    {
+        $this->width = $this->height = $height;
+    }
+}
+
+
                     </code>
                 </pre>
             </section>
             <section>
                 <pre class="stretch">
                     <code class="php">
-class Square extends Rectangle {
-
-    public function setHeight($value) {
-        $this->width = $value;
-        $this->height = $value;
-    }
-
-    public function setWidth($value) {
-        $this->width = $value;
-        $this->height = $value;
-    }
-}
-                    </code>
-                </pre>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
- function areaVerifier(Rectangle $r) {
+function verifyArea(Rectangle $r) {
         $r->setWidth(5);
         $r->setHeight(4);
 
-        if($r->area() != 20) {
+        if($r->getArea() != 20) {
             throw new Exception('Bad area!');
         }
 
@@ -569,8 +623,52 @@ class Square extends Rectangle {
                 </pre>
             </section>
             <section>
+                 <pre class="stretch">
+                    <code class="php">
+interface Shape
+{
+    public function getArea(): int;
+}
+
+class Rectangle implements Shape
+{
+    private $width = 0;
+    private $height = 0;
+
+    public function __construct(int $width, int $height)
+    {
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function getArea(): int
+    {
+        return $this->width * $this->height;
+    }
+}
+
+class Square implements Shape
+{
+    private $length = 0;
+
+    public function __construct(int $length)
+    {
+        $this->length = $length;
+    }
+
+    public function getArea(): int
+    {
+        return $this->length ** 2;
+    }
+}
+
+                    </code>
+                </pre>
+            </section>
+            <section>
                 <h2>Interface Segregation Principle</h2>
                 <h4>Many client-specific interfaces are better than one general-purpose interface</h4>
+                <h4>Classes should not be forced to depend upon interfaces that they do not use.</h4>
                 <!-- Put more simply: Do not add additional functionality to an existing interface by adding new methods.
 Instead, create a new interface and let your class implement multiple interfaces if needed. -->
             </section>
@@ -737,8 +835,7 @@ class WelcomeMessageSender
             </section>
             <section>
                 <h2>Use intention-revealing names</h2>
-                <h4>The name of a variable, function, or class, should answer all the big questions. It
-                    should tell you why it exists, what it does, and how it is used. If a name requires a comment,
+                <h4>The name of a variable, function, or class  should tell you why it exists, what it does, and how it is used. If a name requires a comment,
                     then the name does not reveal its intent.</h4>
             </section>
             <section>
@@ -831,6 +928,8 @@ public function calculateProductsTotal(ProductCollection $products){
                     </code>
                 </pre>
             </section>
+            <section data-background-image="img/meme-naming.png"
+                     data-background-size="contain"></section>
             <section>
                 <h2>Avoid disinformation</h2>
                 <h4>Don't call something it's not!</h4>
@@ -921,10 +1020,6 @@ class Customer {
             </section>
             <section>
                 <h2>Add meaningful context and don't add context when is not needed </h2>
-                <h4>There are a few names which are meaningful in and of themselves—most are not. Instead,
-                    you need to place names in context for your reader by enclosing them in well-named
-                    classes, functions, or namespaces. When all else fails, then prefixing the name may be
-                    necessary as a last resort.</h4>
             </section>
             <section>
                  <pre class="stretch">
@@ -1270,7 +1365,7 @@ class Cessna implements Airplane
                 <h2>Use as less arguments as possible. Use objects and arrays when you need many arguments</h2>
                 <h4>The ideal number of arguments for a function is
                     zero . Three arguments should be avoided where possible. More than three
-                     requires very special justification—and then shouldn’t be used anyway. </h4>
+                     requires very special justification to be used. </h4>
             </section>
             <section>
                 <h2>Don't use flag arguments </h2>
@@ -1444,6 +1539,9 @@ $income = $promoEarnings + $developmentEarning + $gifts - $this->getMonthlyExpen
         </section>
         <section id="clean-code-errorhandling">
             <section>
+                <h1>Error Handling</h1>
+            </section>
+            <section>
                 <h2>Use Exceptions instead returning error codes </h2>
                 <h4></h4>
             </section>
@@ -1554,6 +1652,7 @@ try {
             <section>
                 <h2>Special Case</h2>
                 <h4>A subclass that provides special behavior for particular cases</h4>
+                <h6>A.K.A Null Object</h6>
             </section>
             <section>
                  <pre class="stretch">
