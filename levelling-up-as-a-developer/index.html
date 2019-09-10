@@ -192,10 +192,10 @@
                 </h3>
             </section>
             <section>
-                <p> Il successo di un progetto è già determinato prima ancora che iniziamo a scrivere una riga di
+                <h3> Il successo di un progetto è già determinato prima ancora che iniziamo a scrivere una riga di
                     codice.<br>
-                    Se le basi non sono solide il massimo che si può fare durante la costruzione del codice è cercare
-                    di contenere i danni al minimo.</p>
+                    Se le basi non sono solide il massimo che si può fare dopo è cercare
+                    di contenere i danni al minimo.</h3>
             </section>
             <section>
                 <h2>Errori comuni</h2>
@@ -243,8 +243,8 @@
                 </aside>
             </section>
             <section>
-                <h4>Imparare a analizzare le funzionalità di un progetto e redarre una lista il più completa possibile
-                    possibile di requisiti è quindi importante quanto saper scrivere codice</h4>
+                <h3>Imparare a analizzare le funzionalità di un progetto e redarre una lista il più completa possibile
+                    possibile di requisiti è quindi importante quanto saper scrivere codice</h3>
             </section>
             <section>
                 <h2>Alcuni elementi da considerare</h2>
@@ -380,6 +380,10 @@
                     that are derived from first principles. But most problems are similar to past problems,
                     and those can be solved using similar solutions, or patterns.
                 </aside>
+            </section>
+            <section>
+                <h2>DRY</h2>
+                <h4>Don't repeat yourself!</h4>
             </section>
         </section>
         <section id="solid">
@@ -983,18 +987,150 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
-//EXAMPLE NEEDED
+Class VehiclesImportCommand{
+
+    //[...]
+
+    public function importVehicles(){
+        try{
+            foreach($this->xmlDataStream as $vehicleXmlNode){
+                try {
+                    $this->currentVehicle = new Vehicle();
+                    $this->currentNode = $vehicleXmlNode;
+                    $this->parseCurrentNodeData();
+                    $this->persistCurrentVehicle();
+                    $this->confirmCurrentVehicleImport();
+
+                    //[...] Other stuff
+
+                } catch (MissingDataException $exception) {
+                    $this->handleVehicleError($exception);
+                }
+            }
+        }
+        catch (\Exception $e) {
+            $this->addCriticalError($e);
+        }
+    }
+}
                     </code>
                 </pre>
             </section>
             <section>
-                <h2>Do not use else, return before</h2>
-                <h4></h4>
+                 <pre class="stretch">
+                    <code class="php">
+Class VehiclesImportCommand{
+
+    //[...]
+
+    public function importVehicles(){
+        try{
+            foreach($this->xmlDataStream as $vehicleXmlNode){
+               $this->importVehicleFromXmlNode($vehicleXmlNode);
+            }
+        }
+        catch (\Exception $e) {
+            $this->addCriticalError($e);
+        }
+    }
+}
+                    </code>
+                </pre>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-//EXAMPLE NEEDED
+Class VehiclesImportCommand{
+
+    //[...]
+
+    public function importVehicles(){
+        try{
+            $this->importVehiclesFromXmlStream();
+        }
+        catch (\Exception $e) {
+            $this->addCriticalError($e);
+        }
+    }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Do not use else</h2>
+                <h4></h4>
+            </section>
+            <section>
+            <pre class="stretch">
+    <code class="php">
+private function handleInvoiceCreation(Request $request, AbstractInvoice $invoice)
+{
+    $form = $this->formFactory->create(InvoiceType::class, $invoice);
+    $form->handleRequest($request);
+
+    if($this->user->canCreate()) {
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->entityManager->persist($invoice);
+            $this->entityManager->flush();
+            $this->flashBag->addSuccessMessage('Fattura creata con successo');
+
+            $this->entityManager->refresh($invoice);
+
+            return new RedirectResponse(
+                $this->router->generate('panel_detail', ['invoice' => $invoice->getId()])
+            );
+        } else {
+            return [
+                'form' => $form->createView(),
+                'invoice' => $invoice,
+            ];
+        }
+
+    } else {
+        // qualcos altro
+    }
+
+}
+    </code>
+            </pre>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+private function handleInvoiceCreation(Request $request, AbstractInvoice $invoice)
+{
+    $form = $this->formFactory->create(InvoiceType::class, $invoice);
+    $form->handleRequest($request);
+
+    if ($this->user->canCreate()) {
+        throw new Exception('Non puoi creare una invoice');
+    }
+
+    if ($form->isSubmitted() && $form->isValid()) {
+
+        $this->entityManager->persist($invoice);
+        $this->entityManager->flush();
+        $this->entityManager->refresh($invoice);
+
+        $this->flashBag->addSuccessMessage('Fattura creata con successo');
+
+        return new RedirectResponse(
+            $this->router->generate('panel_detail', ['invoice' => $invoice->getId()])
+        );
+    }
+
+
+    return [
+        'form' => $form->createView(),
+        'invoice' => $invoice,
+    ];
+
+
+}
+
+
                     </code>
                 </pre>
             </section>
@@ -1005,7 +1141,27 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
-//EXAMPLE NEEDED
+Class ProductHelper(){
+    //Generic Name , probably doing a lot of stuff who need to be splitted in subclasses
+}
+
+public function GetXmlDataParseNodeCheckIfNotPresentAndPersistVehicleToDatabase(){
+    //That's probably wrong
+}
+
+class ProductsHtmlRenderer(){
+
+       public function retrieveProducts(){
+            return $this->EntityManager->getRepository(Product::class)->findActiveProducts();
+            //This function is not related to the HtmlRenderer, the class is doing too much and the name is wrong and deceptive
+       }
+
+       public function renderProducts(){
+            $products = $this->retrieveProducts();
+             //return a html page with products
+       }
+}
+
                     </code>
                 </pre>
             </section>
@@ -1016,7 +1172,24 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
-//EXAMPLE NEEDED
+public function isOrderFormValid(OrderForm $orderForm){
+    $this->checkRequiredData($orderForm);
+    $this->userValidator->checkIfUserExist($orderForm->getUser());
+
+    // this is stuff from a different level of abstraction
+    if($orderForm->getSecurityCode() !== "pugsondrio"){
+        throw new SecurityException("Wrong Security Code");
+    }
+
+}
+
+//This is Better
+public function isOrderFormValid(OrderForm $orderForm){
+    $this->checkRequiredData($orderForm);
+    $this->userValidator->checkIfUserExist($orderForm->getUser());
+    $this->checkSecurityCode($orderForm->getSecurityCode());
+
+}
                     </code>
                 </pre>
             </section>
@@ -1026,20 +1199,70 @@ public function addProductDiscountCode(Product $product, string $code){
                 <h6>A caller function should always reside above the callee function</h6>
             </section>
             <section>
-                 <pre class="stretch">
-                    <code class="php">
-//EXAMPLE NEEDED
-                    </code>
-                </pre>
-            </section>
-            <section>
                 <h2>Avoid switch </h2>
                 <h4>Use polymorphism instead</h4>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+class Airplane
+{
+    // ...
 
+    public function getCruisingAltitude(): int
+    {
+        switch ($this->type) {
+            case '777':
+                return $this->getMaxAltitude() - $this->getPassengerCount();
+            case 'Air Force One':
+                return $this->getMaxAltitude();
+            case 'Cessna':
+                return $this->getMaxAltitude() - $this->getFuelExpenditure();
+        }
+    }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+interface Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int;
+}
+
+class Boeing777 implements Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        return $this->getMaxAltitude() - $this->getPassengerCount();
+    }
+}
+
+class AirForceOne implements Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        return $this->getMaxAltitude();
+    }
+}
+
+class Cessna implements Airplane
+{
+    // ...
+
+    public function getCruisingAltitude(): int
+    {
+        return $this->getMaxAltitude() - $this->getFuelExpenditure();
+    }
+}
                     </code>
                 </pre>
             </section>
@@ -1059,7 +1282,29 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
-//EXAMPLE NEEDED
+function createFile(string $name, bool $temp = false): void
+{
+    if ($temp) {
+        touch('./temp/'.$name);
+    } else {
+        touch($name);
+    }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+function createFile(string $name): void
+{
+    touch($name);
+}
+
+function createTempFile(string $name): void
+{
+    touch('./temp/'.$name);
+}
                     </code>
                 </pre>
             </section>
@@ -1070,7 +1315,14 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+public function isCurrentUserActive(){
+   $currentUser = $this->securityHandler->getCurrentUser();
+   if($currentUser->isActive()){
+       return true;
+   }
+   $this->UserManager->delete($currentUser); // that's another
+    return false;
+}
                     </code>
                 </pre>
             </section>
@@ -1083,28 +1335,22 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
+class UserAuthenticationService{
 
+    public function login(string $username, string $password){
+        $user = $this->getUser($username);
+        if($this->passwordEncoder->isPasswordValid($user->getHashPassword())){
+            $this->createAuthenticatedSession();
+            return $user; // That's bad , create a getCurrentAuthenticatedUser function instead
+        }
+    }
+
+}
                     </code>
                 </pre>
+                <aside class="notes"></aside>
             </section>
-            <section>
-                <h2>Use Exceptions instead returning error codes </h2>
-                <h4></h4>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
 
-                    </code>
-                </pre>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
-            </section>
         </section>
         <section id="clean-code-comments">
             <section>
@@ -1135,13 +1381,6 @@ public function addProductDiscountCode(Product $product, string $code){
                 </h4>
             </section>
             <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
-            </section>
-            <section>
                 <h2>Order methods by depth</h2>
                 <h4>
                     if method a depends on b and then c that is the order in which they should appear
@@ -1150,7 +1389,22 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
+public function getUsersForRender(){
+    $users = $this->userRepository->getUsers();
+    return $this->parseUserCollection($users);
+}
 
+private function parseUserCollection(ArrayCollection $users){
+    $parsedUsers = [];
+    foreach($users as $user){
+        $parsedUsers[] = $this->parseUser($user);
+    }
+    return $parsedUsers;
+}
+
+private function parseUser(User $user){
+    //and so on..
+}
                     </code>
                 </pre>
             </section>
@@ -1159,13 +1413,6 @@ public function addProductDiscountCode(Product $product, string $code){
                 <h4>
                     If two methods do similar things put them close together
                 </h4>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
             </section>
             <section>
                 <h2>Limit line length</h2>
@@ -1182,7 +1429,9 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                  <pre class="stretch">
                     <code class="php">
+$income=$promoEarnings+$developmentEarnings+$gifts-$this->getMonthlyExpenses();
 
+$income = $promoEarnings + $developmentEarning + $gifts - $this->getMonthlyExpenses();
                     </code>
                 </pre>
             </section>
@@ -1192,47 +1441,43 @@ public function addProductDiscountCode(Product $product, string $code){
                     Adopt one standard as a team for naming, spacing , and all formatting stuff.
                 </h4>
             </section>
-            <section>
-                <h2>PHP CS FIXER</h2>
-                <h4>
-
-                </h4>
-            </section>
         </section>
         <section id="clean-code-errorhandling">
             <section>
-                <h1>Error Handling</h1>
-            </section>
-            <section>
-                <h2>Use exceptions rather than return codes</h2>
-                <h4>
-
-                </h4>
+                <h2>Use Exceptions instead returning error codes </h2>
+                <h4></h4>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
-
+if (deletePage($page) == E_OK) {
+    if ($registry->deleteReference($page->getName()) == E_OK) {
+        if ($configKeys->deleteKey($page->getKey()) == E_OK){
+            $logger->log("page deleted");
+        } else {
+            $logger->log("configKey not deleted");
+        }
+    } else {
+        $logger->log("deleteReference from registry failed");
+    }
+} else {
+    $logger->log("delete failed");
+    return E_ERROR;
+}
                     </code>
                 </pre>
             </section>
             <section>
-                <h2>Write your try catch statement first</h2>
-                <h4>
-                    In a way, try blocks are like transactions. Your catch has to leave your program in a
-                    consistent state, no matter what happens in the try .
-                </h4>
-                <aside class="notes">
-                    For this reason it is good practice to
-                    start with a try - catch - finally statement when you are writing code that could throw
-                    exceptions. This helps you define what the user of that code should expect, no matter what
-                    goes wrong with the code that is executed in the try .
-                </aside>
-            </section>
-            <section>
                  <pre class="stretch">
                     <code class="php">
-
+try {
+    deletePage($page);
+    $registry->deleteReference(page->getName());
+    $configKeys->deleteKey(page->getKey());
+}
+catch (Exception $exception) {
+    $logger->log($exception->getMessage());
+}
                     </code>
                 </pre>
             </section>
@@ -1242,10 +1487,146 @@ public function addProductDiscountCode(Product $product, string $code){
                     If you are tempted to return null from
                     a method, consider throwing an exception or returning a SPECIAL CASE object instead
                 </h4>
+                <h6>When we return null, we are
+                    essentially creating work for
+                    ourselves and foisting problems upon
+                    our callers</h6>
+            </section>
+            <section>
+                <h2>Throw a meaningful exception</h2>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+$user = $userRepository->get('John');
+if (null !== $user && $user->isSubscribedTo($notification)) {
+ $notifier->notify($user, $notification);
+}
+
+
+interface UserRepository
+{
+ public function get(string $username): ?User;
+}
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+
+interface UserRepository
+{
+    /**
+     * @param string $username
+     * @throws UserNotFound
+     * @return User
+     */
+    public function get(string $username): User;
+}
+
+final class DbUserRepository implements UserRepository
+{
+    public function get(string $username): User
+    {
+        $userRecord = $this->db->fetchAssoc('SELECT * FROM users W');
+         if (false === $userRecord) {
+            throw new UserNotFound();
+         }
+        return User::fromArray($userRecord);
+    }
+}
+
+
+try {
+    $user = $userRepository->get($username);
+    if ($user->isSubscribedTo($notification)) {
+        $notifier->notify($user, $notification);
+    }
+} catch (UserNotFound $ex) {
+    $this->logger->notice('User was not found', ['username' => $u ];
+}
+
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Special Case</h2>
+                <h4>A subclass that provides special behavior for particular cases</h4>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+class UnknownUser extends User
+{
+    public function username(): string
+    {
+        return 'unknown';
+    }
+    public function isSubscribedTo(Notification $notification): b
+    {
+        return false;
+    }
+}
+
+//special case factory
+class User
+{
+    public static function unknown(): User
+    {
+        static $unknownUser = null;
+        if (null === $unknownUser) {
+            $unknownUser = new UnknownUser();
+        }
+        return $unknownUser;
+    }
+}
+
+
+final class DbUserRepository implements UserRepository
+{
+    public function get(string $username): User
+    {
+         $userRecord = $this->db->fetchAssoc('SELECT * FROM users W ');
+         if (false === $userRecord) {
+         return new UnknownUser();
+         }
+        return User::fromArray($userRecord);
+    }
+}
+
+//Checking for special case
+if ($user === User::unknown()) {
+ //do something
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+//Special case object as private nested class
+class User
+{
+    public static function unknown(): User
+    {
+        static $unknownUser = null;
+        if (null === $unknownUser) {
+            $unknownUser = new class extends User {
+                public function username(): string
+                {
+                    return 'unknown';
+                }
+                public function isSubscribedTo(Notification $noti
+                {
+                    return false;
+                }
+            };
+        }
+        return $unknownUser;
+    }
+}
 
                     </code>
                 </pre>
@@ -1253,15 +1634,122 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                 <h2>Don't pass null</h2>
                 <h4>
-
+                    Returning null from methods is
+                    bad, but passing null into methods
+                    is worse.
                 </h4>
             </section>
             <section>
                  <pre class="stretch">
                     <code class="php">
+class Order
+{
+    public function __construct(
+        Product $product,
+        Customer $customer,
+        ?Discount $discount
+    ) {
+        $this->product = $product;
+        $this->customer = $customer;
+        $this->discount = $discount;
+    }
+}
 
+final class PremiumDiscount implements Discount
+{
+    public function apply(float $productPrice): float
+    {
+        return $productPrice * 0.5;
+    }
+}
                     </code>
                 </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+class Order
+{
+    public function __construct(
+        Product $product,
+        Customer $customer,
+        ?Discount $discount //nullable
+    ) {
+        $this->product = $product;
+        $this->customer = $customer;
+        $this->discount = $discount;
+    }
+
+    public function total(): float{
+        $price = $this->product->getPrice();
+
+        if (null !== $this->discount){ //bad code
+            $price = $this->discount->apply($price);
+        }
+
+        return $price;
+    }
+
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                 <pre class="stretch">
+                    <code class="php">
+class Order
+{
+    public function __construct(
+        Product $product,
+        Customer $customer,
+        Discount $discount
+    ) {
+        $this->product = $product;
+        $this->customer = $customer;
+        $this->discount = $discount;
+    }
+}
+
+final class NoDiscount implements Discount
+{
+     public function apply(float $productPrice): float
+     {
+        return $productPrice;
+     }
+}
+
+//use example
+$order = new Order($product, $customer, new NoDiscount());
+                    </code>
+                </pre>
+            </section>
+        <section>
+            <h2>Exception Vs Special Case</h2>
+            <ul>
+                <li>
+                    Special Case as default strategy instead of
+                    optional parameters
+                </li>
+                <li>
+                    Exceptions break normal ow to split business
+                    logic from error handling
+                </li>
+                <li>
+                    Special Case handles exceptional behaviour
+                </li>
+                <li>
+                    Exception emphasizes violated business rule
+                </li>
+            </ul>
+        </section>
+            <section>
+                <h2>CENTRAL ERROR HANDLER</h2>
+                <h4><strong>Do not catch exception</strong><br> unless you have a very good reason</h4>
+            </section>
+            <section>
+                <h2>When to catch exceptions?</h2>
+                <h4>Wraps the entire system to handle any uncaught
+                    exceptions from a single place</h4>
             </section>
         </section>
         <section id="clean-code-classes">
@@ -1285,7 +1773,7 @@ public function addProductDiscountCode(Product $product, string $code){
             <section>
                 <h2>Encapsulation</h2>
                 <h4>
-                    Keep variables and functions private if it's not needed to be public or protected. Information hiding is the way
+                    Keep variables and functions private if it's not needed to be public or protected. Information hiding is the way to manage complexity
                 </h4>
             </section>
             <section>
@@ -1296,50 +1784,102 @@ public function addProductDiscountCode(Product $product, string $code){
                 </h4>
             </section>
             <section>
-                <h2>Cohesion</h2>
+                <h2>Prefer composition over inheritance</h2>
                 <h4>
 
                 </h4>
-                <aside class="notes">
-                    Classes should have a small number of instance variables. Each of the methods of a class
-                    should manipulate one or more of those variables. In general the more variables a method
-                    manipulates the more cohesive that method is to its class. A class in which each variable is
-                    used by each method is maximally cohesive.When cohesion is high, it
-                    means that the methods and variables of the class are co-dependent and hang together as a
-                    logical whole.
-                </aside>
-            </section>
-            <section>
-                 <pre class="stretch">
-                    <code class="php">
-
-                    </code>
-                </pre>
             </section>
         </section>
         <section id="php-tools">
             <section>
-                <h1>PHP QUALITY TOOLS</h1>
+                <h1>PHP & QUALITY TOOLS</h1>
+            </section>
+            <section>
+                <h2>
+                    Use types!
+                </h2>
+                <h4>
+                    PHP was shit, but now it's better. What's your excuse?
+                </h4>
+                 <pre class="stretch">
+                    <code class="php">
+public function addProductToWishlist($product,$user,$wishlistG){
+    //stuff
+}
+
+public function addProductToWishlist(Product $product, User $user, Wishlist $wishlist): void
+{
+
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>
+                    Use phpdocs!
+                </h2>
+                <h4>Document arguments, return types and exceptions, a good IDE like PHPStorm generate them for you!</h4>
+            </section>
+            <section>
+                <pre class="stretch">
+                    <code class="php">
+/**
+     * @param StockMovementGenerator $stockMovementGenerator
+     * @param float $movement
+     * @param string $type
+     * @param Commission $commission
+     *
+     * @return StockMovement
+     */
+    public function generateStockMovement(
+        StockMovementGenerator $stockMovementGenerator,
+        float $movement,
+        string $type,
+        Commission $commission
+    ): StockMovement {
+        if (! $this->isTypeValid($type)) {
+            throw new \InvalidArgumentException('Type is not valid');
+        }
+        $stockMovement = StockMovementFactory::build($stockMovementGenerator);
+        $stockMovement->setMovement($movement);
+        $stockMovement->setType($type);
+        if ($commission !== Commission::notSet()) {
+            $stockMovement->setCommission($commission);
+        }
+        $stockMovement->setRelatedObject($stockMovementGenerator);
+
+        return $stockMovement;
+    }
+                    </code>
+                </pre>
             </section>
             <section>
                 <h2>PHP STORM</h2>
-                <h4></h4>
+                <h4>Probably the best php IDE around</h4>
             </section>
             <section>
                 <h2>PHP CS FIXER</h2>
-                <h4></h4>
+                <h4>Good for setting a standard for formatting in a team. Uses PSR but can be customizable as you wish</h4>
             </section>
             <section>
                 <h2>PHP MESS DETECTOR</h2>
-                <h4></h4>
+                <p>What PHPMD does is: It takes a given PHP source code base and look for several potential problems within that source. These problems can be things like:
+
+                    Possible bugs
+                    Suboptimal code
+                    Overcomplicated expressions
+                    Unused parameters, methods, properties</p>
             </section>
             <section>
                 <h2>PHP CODE SNIFFER</h2>
-                <h4></h4>
+                <h4>Detect violations of a defined coding standard</h4>
             </section>
             <section>
                 <h2>PHP STAN</h2>
-                <h4></h4>
+                <h4>PHPStan focuses on finding errors in your code without actually running it. It catches whole classes of bugs even before you write tests for the code. It moves PHP closer to compiled languages in the sense that the correctness of each line of the code can be checked before you run the actual line.</h4>
+            </section>
+            <section>
+                <h2>That's for another time!</h2>
             </section>
         </section>
         <section>
