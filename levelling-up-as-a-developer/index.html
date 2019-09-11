@@ -100,21 +100,23 @@
                     Clean Code - Robert C. Martin
                 </li>
             </ul>
+            <aside class="notes">
+                Code Complete - Handbook molto completo che tratta di TUTTO quello che è correlato alla programmazione ,
+                Quando non tratta in maniera dettagliata un argomento rimanda a altri libri ed è quindi un ottimo punto di partenza se si vuole iniziare a studiare.
+                Clean Code - Si sofferma sui vari aspetti di scrittura del codice e spiega le motivazioni e i metodi per scrivere codice "pulito"
+            </aside>
         </section>
         <section id="cleancode-why">
             <section>
                 <h1>WHY? </h1>
                 <aside class="notes">
-                    Voglio cominciare iniziando a spiegarvi il perchè di questa presentazione.
-                    Lo scopo di questa presentazione è per lo più quello di far riflettere sulla scrittura di codice e
-                    quali aspetti del nostro lavoro sono i più importanti e magari spronare sopratutto quelli che hanno
-                    iniziato da poco
-                    a riflettere su alcuni aspetti del mondo della programmazione.
-                    Io stesso mi ritenevo un buon programmatore dato che il mio codice funzionava ma poi in realtà una
-                    volta partecipato a conferenze come phpday e simili ti rendi conto di non sapere un cazzo e capisci
-                    che è importante
-                    studiare e riuscire a "livellare" migliorando costantemente nel tempo.
-                    Fatevi una domanda..
+                    Voglio cominciare iniziando a spiegarvi i motivi che mi hanno spinto a fare questa presentazioe.
+                    Lo scopo di questa presentazione è sopratutto quello di far iniziare a riflettere su alcuni aspetti di scrittura
+                    a cui magari non si presta molta attenzione.
+                    Io stesso mi ritenevo un buon programmatore perchè lavoravo da solo e il mio codice funzionava.
+                    Poi un bel giorno ho partecpato al mio primo symfony day e li mi sono reso conto che in realtà non sapevo un cazzo e il mondo
+                    della programmazione era molto più espanso di quanto mi aspettassi e da li ho cambiato approccio.
+                    Cominciamo.. allora fatevi una domanda:
                 </aside>
             </section>
             <section>
@@ -125,21 +127,21 @@
                 <h2>Oppure così ?</h2>
                 <img src="img/meme-goodthinking.jpg">
             </section>
-            <section>
-                <h2>TRUTHS ABOUT CODING</h2>
-                <ul>
-                    <li>Time reading > Time writing</li>
-                    <li>Ti dimentichi il tuo codice in fretta</li>
-                    <lI>I membri del tuo team pensano diversamente da te</lI>
-                    <li>L'unica costante è il cambiamento</li>
-                    <li>Per essere un buon programmatore non basta saper scrivere codice che funzioni</li>
+<!--            <section>-->
+<!--                <h2>TRUTHS ABOUT CODING</h2>-->
+<!--                <ul>-->
+<!--                    <li>Time reading > Time writing</li>-->
+<!--                    <li>Ti dimentichi il tuo codice in fretta</li>-->
+<!--                    <lI>I membri del tuo team pensano diversamente da te</lI>-->
+<!--                    <li>L'unica costante è il cambiamento</li>-->
+<!--                    <li>Per essere un buon programmatore non basta saper scrivere codice che funzioni</li>-->
 
-                    <aside class="notes">
-                        Queste sono alcune cose che ho imparato nei miei anni da programmatore.
-                        Non so quanti di voi si siano trovati in .. questa situazione
-                    </aside>
-                </ul>
-            </section>
+<!--                    <aside class="notes">-->
+<!--                        Queste sono alcune cose che ho imparato nei miei anni da programmatore.-->
+<!--                        Non so quanti di voi si siano trovati in .. questa situazione-->
+<!--                    </aside>-->
+<!--                </ul>-->
+<!--            </section>-->
             <section>
                 <h2>CLEAN CODE SAVES TIME</h2>
             </section>
@@ -149,7 +151,7 @@
                  data-background-size="contain"
         >
             <aside class="notes">
-                Questa situazione .. a me è successo più di una volta ve lo assicuro.
+                Credo che molti si siano trovati in quuesta situazione almeno una volta, io di sicuro
             </aside>
         </section>
         <section id="meme-02"
@@ -157,7 +159,7 @@
                  data-background-size="contain"
         >
             <aside class="notes">
-                Il codice può nascondere delle cose meravigliose al suo interno .
+                E sappiamo tutti che il codice può regalare dei momenti meravigliosi.
             </aside>
         </section>
         <section id="software-activities">
@@ -170,17 +172,15 @@
             </div>
             <aside class="notes">
                 Le attività che fanno parte della costruzione di un software sono tantissime.
-                Oggi ci concentreremo principalmente sulla parte relativa ai requisiti e sulla parte di "Construction"
-                in cui si va effettivamente a scrivere codice
+                Oggi ci concentreremo principalmente sulla parte relativa ai requisiti e sulla parte costruzione effettiva del codice.
                 Ognuna di queste fasi è però importante e sarebbe bello se in futuro qualcuno si proponesse per fare
                 talk anche su altri aspetti.
-                Code Complete si sofferma su ognuna di queste fasi e fa rimandi ad altri libri/fonti per cui lo
-                consiglio come punto di partenza per chi voglia iniziare a studiarsi meglio i vari aspetti.
             </aside>
         </section>
         <section id="prerequisites">
             <section>
-                <h1>L'importanza dei requisiti</h1>
+                <h3>L'importanza dei requisiti</h3>
+                <img style="width:auto;height:50vh" src="img/meme-requirements.jpg">
             </section>
             <section>
                 <h3>
@@ -304,8 +304,7 @@
             </section>
             <section>
                 <h2>The Clean Coder Rule</h2>
-                <h4>   Always leave the code
-                    cleaner than you found it.</h4>
+                <h4> Always leave the code cleaner than you found it.</h4>
             </section>
         </section>
         <section id="martin-quote">
@@ -383,9 +382,15 @@
                 <h4>Don't repeat yourself!</h4>
             </section>
         </section>
+
+
         <section id="solid">
             <section>
                 <h1> SOLID </h1>
+                <aside class="notes">
+                    Acronimo di un paradigma che riassume in sé alcune delle migliori pratiche per la programmazione orientata agli oggetti (OOP, Object Oriented Programming).
+                    Sono tutti principi utili e generali a cui ispirarsi per scrivere software efficiente ed elegante.
+                </aside>
             </section>
             <section>
                 <h2>Single responsibility principle</h2>
@@ -1591,6 +1596,10 @@ catch (Exception $exception) {
                     our callers</h6>
             </section>
             <section>
+                <h2>phpDay 2019 - Handling Exceptional Conditions with Grace and Style</h2>
+                <h4>Nikola Posa</h4>
+            </section>
+            <section>
                 <h2>Throw a meaningful exception</h2>
             </section>
             <section>
@@ -1628,7 +1637,7 @@ final class DbUserRepository implements UserRepository
 {
     public function get(string $username): User
     {
-        $userRecord = $this->db->fetchAssoc('SELECT * FROM users W');
+         $userRecord = $this->db->fetchAssoc('SELECT * FROM users W WHERE user.username = :username ',['username'=>$username]);
          if (false === $userRecord) {
             throw new UserNotFound();
          }
@@ -1654,6 +1663,7 @@ try {
                 <h4>A subclass that provides special behavior for particular cases</h4>
                 <h6>A.K.A Null Object</h6>
             </section>
+
             <section>
                  <pre class="stretch">
                     <code class="php">
@@ -1687,7 +1697,7 @@ final class DbUserRepository implements UserRepository
 {
     public function get(string $username): User
     {
-         $userRecord = $this->db->fetchAssoc('SELECT * FROM users W ');
+         $userRecord = $this->db->fetchAssoc('SELECT * FROM users W WHERE user.username = :username ',['username'=>$username]);
          if (false === $userRecord) {
          return new UnknownUser();
          }
@@ -1738,6 +1748,7 @@ class User
                     is worse.
                 </h4>
             </section>
+
             <section>
                  <pre class="stretch">
                     <code class="php">
